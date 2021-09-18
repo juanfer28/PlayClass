@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class ConexionBD {
     private final String conectorInstalado = "jdbc:mysql:";
     private final String host = "localhost:3306";
-    private final String baseDatos = "bdsirius";
+    private final String baseDatos = "playclassbd";
     private final String username = "root";
     private final String password = "12345"; 
     private Connection conexion;
