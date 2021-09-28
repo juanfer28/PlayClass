@@ -55,7 +55,7 @@ public class EscuelaDAO {
         ConexionBD con = new ConexionBD();
         String nombre = e.getNombre();
         String sql = "-----";//CAMBIAR (VALUES (valores a agregar))
-        ResultSet rs = con.EjecutarQuery(sql);
+        ResultSet rs = con.EjecutarInsert(sql);
         
         int id = 0;
         try {

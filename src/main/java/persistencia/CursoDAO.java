@@ -59,7 +59,7 @@ public class CursoDAO {
         String nombre = c.getNombre();
         String descripcion = c.getDescripcion();
         String sql = "-----";//CAMBIAR (VALUES (valores a agregar))
-        ResultSet rs = con.EjecutarQuery(sql);
+        ResultSet rs = con.EjecutarInsert(sql);
         
         int id = 0;
         try {
