@@ -5,10 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-/**
- * Se encarga de la conexión con la base de datos MySQL
- * @author Juanfer
- */
+
 public class ConexionBD {
     private final String conectorInstalado = "jdbc:mysql:";
     private final String host = "localhost:3306";
@@ -22,14 +19,14 @@ public class ConexionBD {
      * Constructor de conexión, ejecuta automáticamente el método conectar
      */
     public ConexionBD() {
-        conectar();
+        Conectar();
     }
     
     /**
      * Determina si hay conexión activa a la base de datos
      * @return true o false
      */
-    public boolean isConectado() {
+    public boolean IsConectado() {
         return (this.conexion != null);
     }
     
@@ -37,7 +34,7 @@ public class ConexionBD {
      * Genera el enlace a la base de datos usando los parámetros iniciales, y 
      * establece el tiempo de ejecución máximo en 30s
      */
-    public void conectar(){
+    public void Conectar(){
         try
         {
             String cadenaConexion = conectorInstalado + "//" + host + "/" + baseDatos;
@@ -57,7 +54,7 @@ public class ConexionBD {
      * @param sql la consulta SQL que se arma para consultar registros
      * @return un resultset con los registros obtenidos por la consulta
      */
-    public ResultSet ejecutarQuery(String sql) {
+    public ResultSet EjecutarQuery(String sql) {
         ResultSet rs = null;
         try
         {
@@ -75,7 +72,7 @@ public class ConexionBD {
      * @param sql la consulta SQL que se arma para insertar un registro
      * @return un resultset con el id del registro que se inserta
      */
-    public ResultSet ejecutarInsert(String sql) {
+    public ResultSet EjecutarInsert(String sql) {
         ResultSet rs = null;
         try
         {
@@ -96,7 +93,7 @@ public class ConexionBD {
      * @param sql la consulta SQL que se arma para modificar un registro
      * @return la cantidad de registros que se han modificado
      */
-    public int ejecutarUpdate(String sql) {
+    public int EjecutarUpdate(String sql) {
         int cant = 0;
         try
         {
@@ -113,7 +110,7 @@ public class ConexionBD {
      * Cierra la conexión a la base de datos. Debe usarse siempre luego de ejecutar 
      * una sentencia y obtener la información requerida
      */
-    public void desconectar() {
+    public void Desconectar() {
         try {
             conexion.close();
             conexion = null;
