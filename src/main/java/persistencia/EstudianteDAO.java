@@ -113,5 +113,44 @@ public class EstudianteDAO {
         }
         con.Desconectar();
         return lista;
-    }      
+    }   
+     
+     
+     
+     
+     
+     
+     
+     
+     
+         /**
+     * Envía la sentencia SQL para almacenar el dato de un juguete
+     * @param j un objeto de tipo Juguete
+     * @return in número indicando el id generado por la base de datos
+     */
+    public int guardarNuevoEstudiante(Estudiante e) {
+        ConexionBD con = new ConexionBD();
+        String nombre = e.getNombre();
+        String apellido = e.getApellido();
+        String email = e.getEmail();
+        int telefono = e.getTelefono();
+        String fecha = e.getFechaInicio();
+        int idcurso = e.getIdcurso();
+        
+        String sql = "INSERT INTO estudiantes (nombre, apellido, email, telefono, fecha, idcurso ) "+
+                     "VALUES ('"+nombre+"', "+apellido+", '"+email+"', "+telefono+", '"+fecha+"', '"+idcurso+"') ";
+        ResultSet rs = con.EjecutarInsert(sql);
+        int id = 0;
+        try {
+            if (rs.next()){
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            con.Desconectar();
+            return 0; 
+        }
+        con.Desconectar();
+        return id;
+    }
+    
 }
