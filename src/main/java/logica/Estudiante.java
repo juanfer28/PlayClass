@@ -15,27 +15,27 @@ public class Estudiante {
     private String apellido;
     private String email;
     private int telefono;
-    private String nombreCurso;
     private String fechaInicio;  //dd/mm/aaaa
+    private int idcurso;
 
     public Estudiante() {
     }
 
     
-    public Estudiante(String nombre, String apellido, String email, int telefono, String nombreCurso, String fechaInicio) {
+    public Estudiante(String nombre, String apellido, String email, int telefono, String fechaInicio, int idcurso ) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.telefono = telefono;
-        this.nombreCurso = nombreCurso;
         this.fechaInicio = fechaInicio;
+        this.idcurso = idcurso;
     }
-    public Estudiante(int id, String nombre, String apellido, String email, int telefono, String nombreCurso, String fechaInicio) {
-        this(nombre,apellido,email,telefono,nombreCurso,fechaInicio);
+    public Estudiante(int id, String nombre, String apellido, String email, int telefono, String fechaInicio, int idcurso) {
+        this(nombre,apellido,email,telefono,fechaInicio, idcurso);
         this.id = id;
         
     }
-    
+
     public int getId() {
         return id;
     }
@@ -76,14 +76,6 @@ public class Estudiante {
         this.telefono = telefono;
     }
 
-    public String getNombreCurso() {
-        return nombreCurso;
-    }
-
-    public void setNombreCurso(String nombreCurso) {
-        this.nombreCurso = nombreCurso;
-    }
-
     public String getFechaInicio() {
         return fechaInicio;
     }
@@ -91,6 +83,13 @@ public class Estudiante {
     public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
-   
+
+    public int getIdcurso() {
+        return idcurso;
+    }
+
+    public void setIdcurso(int idcurso) {
+        this.idcurso = idcurso;
+    }
     
 }

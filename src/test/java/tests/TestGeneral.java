@@ -8,6 +8,7 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import persistencia.ConexionBD;
+import persistencia.EstudianteDAO;
 
 /**
  *
@@ -23,5 +24,11 @@ public class TestGeneral {
         Assert.assertTrue(con.IsConectado(), "No hay conexión creada. ");
         con.Desconectar();
         Assert.assertFalse(con.IsConectado(), "No se cerró conexión. ");
+    }
+    
+    @Test
+    public void verificarCargaEstudiantes() {
+        EstudianteDAO dao = new EstudianteDAO();
+        Assert.assertTrue(dao.consultarEstudiante().size() > 0, "No se cargaron datos de juguetes. ");
     }
 }
