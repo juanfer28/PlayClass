@@ -23,7 +23,7 @@ public class EstudianteDAO {
     public ArrayList<Estudiante> consultarEstudiante() {
         ArrayList<Estudiante> lista = new ArrayList<>();
         ConexionBD con = new ConexionBD();
-        String sql = "SELECT IDEstudiante, Nombre_Estudiante, Apellido_Estudiante, Email_Estudiante, Teléfono,Fecha_de_Inicio, IDCurso" + 
+        String sql = "SELECT IDEstudiante, Nombre_Estudiante, Apellido_Estudiante, Email_Estudiante, Teléfono, Fecha_de_Inicio, IDCurso " + 
                      "FROM estudiantes ";
         ResultSet rs = con.EjecutarQuery(sql);
         try {
@@ -35,7 +35,7 @@ public class EstudianteDAO {
                 int telefono = rs.getInt("Teléfono");
                 String fecha = rs.getString("Fecha_de_Inicio");
                 int idcurso = rs.getInt("IDCurso");
-                Estudiante e = new Estudiante(id, nombre, apellido, email, telefono, fecha,idcurso);
+                Estudiante e = new Estudiante(id, nombre, apellido, email, telefono, fecha, idcurso);
                 lista.add(e);
             }
         } catch (SQLException ex) {

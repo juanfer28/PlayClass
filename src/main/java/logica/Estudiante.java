@@ -31,7 +31,7 @@ public class Estudiante {
         this.idcurso = idcurso;
     }
     public Estudiante(int id, String nombre, String apellido, String email, int telefono, String fechaInicio, int idcurso) {
-        this(nombre,apellido,email,telefono,fechaInicio, idcurso);
+        this(nombre, apellido, email, telefono, fechaInicio, idcurso);
         this.id = id;
         
     }
