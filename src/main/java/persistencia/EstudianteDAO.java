@@ -78,4 +78,40 @@ public class EstudianteDAO {
         con.Desconectar();
         return e;
     }
+    /**
+     * Envía la sentencia SQL para obtener la información de ciertos estudiante
+     * mediante filtro y estructura la respuesta en una lista de tipo Estudiante
+     * @param filtro el filtro para buscar datos en la lista de juguetes para consultar
+     * @return un arraylist de tipo Juguete con la información cargada
+     */
+     public ArrayList<Estudiante> consultarestudiantesPorFiltro(String filtro) {
+        ArrayList<Estudiante> lista = new ArrayList<>();
+        ConexionBD con = new ConexionBD();
+        String sql = "SELECT e.IDEstudiante, e.Nombre_Estudiante, e.Apellido_Estudiante, e.Email_Estudiante, e.Teléfono, e.Fecha_de_Inicio, e.IDCurso " +
+                     "FROM estudiantes e " +
+                     "JOIN matriculas m ON (e.IDEstudiante = m.IDEstudiante) " +
+                     "JOIN estados_juguetes e ON (j.estadojuguete_id = e.id) " +
+                     "WHERE j.nombre LIKE '%" + filtro + "%' " +
+                     "OR t.tipo LIKE '%" + filtro + "%' " +
+                     "OR e.estado LIKE '%" + filtro + "%' " +
+                     "OR j.disponibilidad LIKE '%" + filtro + "%' ";
+        ResultSet rs = con.ejecutarQuery(sql);
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                int idTipo = rs.getInt("tipojuguete_id");
+                String fechaCompra = rs.getString("fechacompra");
+                int idEstado = rs.getInt("estadojuguete_id");
+                String disponibilidad = rs.getString("disponibilidad");
+                Juguete j = new Juguete(id, nombre, idTipo, fechaCompra, idEstado, disponibilidad);
+                lista.add(j);
+            }
+        } catch (SQLException ex) {
+            con.Desconectar();
+            return null;
+        }
+        con.Desconectar();
+        return lista;
+    }      
 }
