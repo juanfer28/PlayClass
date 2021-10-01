@@ -90,22 +90,25 @@ public class EstudianteDAO {
         String sql = "SELECT e.IDEstudiante, e.Nombre_Estudiante, e.Apellido_Estudiante, e.Email_Estudiante, e.Teléfono, e.Fecha_de_Inicio, e.IDCurso " +
                      "FROM estudiantes e " +
                      "JOIN matriculas m ON (e.IDEstudiante = m.IDEstudiante) " +
-                     "JOIN estados_juguetes e ON (j.estadojuguete_id = e.id) " +
-                     "WHERE j.nombre LIKE '%" + filtro + "%' " +
-                     "OR t.tipo LIKE '%" + filtro + "%' " +
-                     "OR e.estado LIKE '%" + filtro + "%' " +
-                     "OR j.disponibilidad LIKE '%" + filtro + "%' ";
-        ResultSet rs = con.ejecutarQuery(sql);
+                     "JOIN cursos c ON (e.IDCurso = c.IDCurso) " +
+                     "WHERE e.Nombre_Estudiante LIKE '%" + filtro + "%' " +
+                     "OR e.Apellido_Estudiante LIKE '%" + filtro + "%' " +
+                     "OR e.Email_Estudiante LIKE '%" + filtro + "%' " +
+                     "OR e.Teléfono LIKE '%" + filtro + "%' " +
+                     "OR e.Fecha_de_Inicio LIKE '%" + filtro + "%' " +
+                     "OR e.IDCurso LIKE '%" + filtro + "%' ";
+        ResultSet rs = con.EjecutarQuery(sql);
         try {
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
-                int idTipo = rs.getInt("tipojuguete_id");
-                String fechaCompra = rs.getString("fechacompra");
-                int idEstado = rs.getInt("estadojuguete_id");
-                String disponibilidad = rs.getString("disponibilidad");
-                Juguete j = new Juguete(id, nombre, idTipo, fechaCompra, idEstado, disponibilidad);
-                lista.add(j);
+                int id = rs.getInt("IDEstudiante");
+                String nombre = rs.getString("Nombre_Estudiante");
+                String apellido = rs.getString("Apellido_Estudiante");
+                String email = rs.getString("Email_Estudiante");
+                int telefono = rs.getInt("Teléfono");
+                String fecha = rs.getString("Fecha_de_Inicio");
+                int idcurso = rs.getInt("IDCurso");
+                Estudiante e = new Estudiante(id, nombre, apellido, email, telefono, fecha, idcurso);
+                lista.add(e);
             }
         } catch (SQLException ex) {
             con.Desconectar();
