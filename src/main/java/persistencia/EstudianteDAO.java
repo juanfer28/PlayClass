@@ -47,5 +47,35 @@ public class EstudianteDAO {
         
        
     }
-    
+    /**
+     * Envía la sentencia SQL para obtener la información de 1 estudiante específico y estructura
+     * la respuesta en un objeto de tipo estudiante
+     * @param idAConsultar el id del Estudiante para consultar
+     * @return un objeto de tipo Estudiante con la información cargada o null
+     */
+    public Estudiante consultarEstudiante(int idAConsultar) {
+        Estudiante e = null;
+        ConexionBD con = new ConexionBD();
+        String sql = "SELECT IDEstudiante, Nombre_Estudiante, Apellido_Estudiante, Email_Estudiante, Teléfono, Fecha_de_Inicio, IDCurso " + 
+                     "FROM estudiantes "+
+                     "WHERE IDEstudiante = " + idAConsultar + " ";
+        ResultSet rs = con.EjecutarQuery(sql);
+        try {
+            if (rs.next()) {
+                int id = rs.getInt("IDEstudiante");
+                String nombre = rs.getString("Nombre_Estudiante");
+                String apellido = rs.getString("Apellido_Estudiante");
+                String email = rs.getString("Email_Estudiante");
+                int telefono = rs.getInt("Teléfono");
+                String fecha = rs.getString("Fecha_de_Inicio");
+                int idcurso = rs.getInt("IDCurso");
+                e = new Estudiante(id, nombre, apellido, email, telefono, fecha, idcurso);
+            }
+        } catch (SQLException ex) {
+            con.Desconectar();
+            return e;
+        }
+        con.Desconectar();
+        return e;
+    }
 }
