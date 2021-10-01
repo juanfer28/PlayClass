@@ -86,7 +86,10 @@ CREATE TABLE `estudiantes` (
   `Email_Estudiante` varchar(100) NOT NULL,
   `Teléfono` int NOT NULL,
   `Fecha_de_Inicio` date NOT NULL,
-  PRIMARY KEY (`IDEstudiante`)
+  `IDCurso` int NOT NULL,
+  PRIMARY KEY (`IDEstudiante`),
+  KEY `FK_IDCurso_estudiantes_idx` (`IDCurso`),
+  CONSTRAINT `FK_IDCurso_estudiantes` FOREIGN KEY (`IDCurso`) REFERENCES `cursos` (`IDCurso`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -145,8 +148,8 @@ CREATE TABLE `matriculas` (
   PRIMARY KEY (`IDMatricula`),
   KEY `FK_IDEstudiante_matriculas_idx` (`IDEstudiante`),
   KEY `IDCuros_matriculas_idx` (`IDCurso`),
-  CONSTRAINT `FK_IDEstudiante_matriculas` FOREIGN KEY (`IDEstudiante`) REFERENCES `estudiantes` (`IDEstudiante`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `IDCuros_matriculas` FOREIGN KEY (`IDCurso`) REFERENCES `cursos` (`IDCurso`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_IDCuros_matriculas` FOREIGN KEY (`IDCurso`) REFERENCES `cursos` (`IDCurso`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_IDEstudiante_matriculas` FOREIGN KEY (`IDEstudiante`) REFERENCES `estudiantes` (`IDEstudiante`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -222,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-29 20:33:09
+-- Dump completed on 2021-09-30 20:34:41

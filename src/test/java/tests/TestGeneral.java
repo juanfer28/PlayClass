@@ -11,15 +11,17 @@ import persistencia.ConexionBD;
 
 /**
  *
- * @author Cielo Juliana
+ * @author Sirius
+ * Se tuvo que poner mayusculas en los metodos porque Gabriel 
+ * los cambio en ConexionDB.
  */
 public class TestGeneral {
     
     @Test
     public void verificarConexion() {
         ConexionBD con = new ConexionBD();
-        Assert.assertTrue(con.isConectado(), "No hay conexión creada. ");
-        con.desconectar();
-        Assert.assertFalse(con.isConectado(), "No se cerró conexión. ");
+        Assert.assertTrue(con.IsConectado(), "No hay conexión creada. ");
+        con.Desconectar();
+        Assert.assertFalse(con.IsConectado(), "No se cerró conexión. ");
     }
 }

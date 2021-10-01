@@ -1,7 +1,7 @@
 <%-- 
-    Document   : 06crearEstudiante
-    Created on : 20/09/2021, 8:40:10 p. m.
-    Author     : Juanfer
+    Document   : 06registrarEstudiante
+    Created on : 30/09/2021, 7:25:44 p. m.
+    Author     : SIRIUS
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,8 +14,8 @@
     <meta name="author" content="Juan Fernando Osorno G">
     <meta name="generator" content="Hugo 0.87.0">
     <link rel="icon"= href="logoPlayClass.ico">
-    <title>Crear Estudiante</title>
-
+    <title>Registro Estudiante</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     
@@ -185,83 +185,72 @@
   </div>
   <div class="b-example-divider"></div>
 
-  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 1080px; height:60px; ">
-    <header class="site-header sticky-top py-1">
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light " style="width: 1080px; height:60px; ">
+    <header class="site-header sticky-top py-0 bg-light pb-2">
         <nav class="container d-flex flex-column flex-md-row justify-content-between">
+          <hr>
+          <hr>
+          <hr>
+          <hr>
           <a class="py-2" href="#" aria-label="Product">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
           </a>
           <label class="py-2 d-none d-md-inline-block text-primary" >Crear Estudiante</label>
           <a class="py-2 d-none d-md-inline-block" href="#">Borrar Estudiante</a>
           <a class="py-2 d-none d-md-inline-block" href="#">Modificar Estudiante</a>
-          <a class="py-2 d-none d-md-inline-block" href="#">#####</a>
-          <a class="py-2 d-none d-md-inline-block" href="#">######</a>
-          <a class="py-2 d-none d-md-inline-block" href="#">#####</a>
-          <a class="py-2 d-none d-md-inline-block" href="#">#####</a>
+          <a class="py-2 d-none d-md-inline-block" href="#"></a>
+          <a class="py-2 d-none d-md-inline-block" href="#"></a>
+          <a class="py-2 d-none d-md-inline-block" href="#"></a>
+          <a class="py-2 d-none d-md-inline-block" href="#"></a>
         </nav>
       </header>
       
-  <div class="container mt-5"> 
-    <h3 class="mb-3">Crear Estudiante</h3>
-    <hr>
-    <form method="post" action="juguetes_ctrl.jsp">
-        <div class="row mb-3">
-            <label for="txtId" class="col-form-label col-sm-2">Id</label>
-            <input type="text" class="col-form-control col-sm-10" id="txtId" name="txtId" value="">
-        </div>
-        <div class="row mb-3">
-            <label for="txtNombre" class="col-form-label col-sm-2">Nombre</label>
-            <input type="text" class="col-form-control col-sm-10" id="txtNombre" name="txtNombre" value="">
-        </div>
-<div class="row mb-3">
-            <label for="selTipo" class="col-form-label col-sm-2">Tipo</label>
-            <select class="col-form-control col-sm-10" id="selTipo" name="selTipo">
-        <option selected value=""></option>
-                <option value="Videojuego">Videojuego</option>
-        <option value="Electrónico">Electrónico</option>
-        <option value="Peluche">Peluche</option>
-                <option value="Otro">Otro</option>
-    </select>
-        </div>
-        <div class="row mb-3">
-            <label for="dtpFechaCompra" class="col-form-label col-sm-2">Fecha de compra</label>
-            <input type="date" class="col-form-control col-sm-10" id="dtpFechaCompra" name="dtpFechaCompra">
-        </div>
-<div class="row mb-3">
-            <label for="selEstado" class="col-form-label col-sm-2">Estado</label>
-            <select class="col-form-control col-sm-10" id="selEstado" name="selEstado">
-        <option selected value=""></option>
-        <option value="Bueno">Bueno</option>
-        <option value="Modificado">Modificado</option>
-        <option value="Dañado">Dañado</option>
-    </select>
-        </div>
-<div class="row mb-3">
-            <label for="txt1" class="col-form-label col-sm-2">Disponibilidad</label>
-        <div class="form-check col-sm-2 mt-2">
-                    <input class="form-check-input" type="radio" name="radDisponibilidad" id="radDisponibilidad1" value="Disponible">
-                    <label class="form-check-label" for="radDisponibilidad1">Disponible</label>
-        </div>
-                <div class="form-check col-sm-2 mt-2">
-                    <input class="form-check-input" type="radio" name="radDisponibilidad" id="radDisponibilidad2" value="Alquilado">
-                    <label class="form-check-label" for="radDisponibilidad2">Alquilado</label>
-        </div>
-                <div class="form-check col-sm-2 mt-2">
-                    <input class="form-check-input" type="radio" name="radDisponibilidad" id="radDisponibilidad3" value="No disponible">
-                    <label class="form-check-label" for="radDisponibilidad3">No disponible</label>
-        </div>
-                <div class="form-check col-sm-2 mt-2">
-                    <input class="form-check-input" type="radio" name="radDisponibilidad" id="radDisponibilidad4" value="Retirado">
-                    <label class="form-check-label" for="radDisponibilidad4">Retirado</label>
-        </div>
-        </div>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-primary" id="btnSubmit" name="btnSubmit" value="nuevo">Guardar</button>
-        <button type="submit" class="btn btn-secondary" id="btnSubmit" name="btnSubmit" value="cancelar">Cancelar</button>
-        </div>
-    </form>
-</div>
-  
+      <div class="container mt-5"> 
+        <h3 class="mb-3">Registro Estudiante</h3>
+        <hr>
+        <form>
+            <div class="row mb-3">
+                <label for="txt1" class="col-form-label col-sm-2">Filtrar por nombre</label>
+                <input type="text" class="col-form-control col-sm-9" id="txt1" name="txt1" value="">
+                <button type="button" class="btn btn-light col-sm-1"><i class="bi bi-search"></i></button>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Nombre del Curso</th>
+                        <th scope="col">Fecha de Inicio</th>
+                        <th scope="col">Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td scope="row">ghjhgj</td>
+                        <td>ghjghjghj</td>
+                        <td>ghjghjghjghj</td>
+                        <td>ghjghjghjghjghj</td>
+                        <td>ghjghjghjghjghj</td>
+                        <td>ghjghjghjghjghj</td>
+                        <td>ghjghjghjghjghj</td>
+                        <td>
+                            <button type="button" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button>
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td colspan=5>No hay datos</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </form>
+    </div>
 </div>
 </main>
 
