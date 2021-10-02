@@ -249,24 +249,25 @@
                     %>
                 <tbody>
                     <% if (hayDatos) { %>
-                        <%  for (Estudiante e : LogicaEstudiante.getLista()) {%>
+                        <%  for (Estudiante e : logicaEstudiante.getLista()) {%>
                     <tr>
-                        <td scope="row">ghjhgj</td>
-                        <td>ghjghjghj</td>
-                        <td>ghjghjghjghj</td>
-                        <td>ghjghjghjghjghj</td>
-                        <td>ghjghjghjghjghj</td>
-                        <td>ghjghjghjghjghj</td>
-                        <td>ghjghjghjghjghj</td>
+                        <td scope="row"><%= e.getId() %></td>
+                        <td><%= e.getNombre()%></td>
+                        <td><%= e.getApellido() %></td>
+                        <td><%= e.getEmail() %></td>
+                        <td><%= e.getTelefono() %></td>
+                        <td><%= logicaEstudiante.getCursos(e.getIdcurso()) %></td>
+                        <td><%= e.getFechaInicio() %></td>
                         <td>
-                            <button type="button" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button>
+                            <a href="06_1crearEstudiante.jsp?accion=editar&id=<%= e.getId()%>"><button type="button" class="btn btn-success"><i class="bi bi-pencil-fill"></i></button></a>
                         </td>
                     </tr>
-                   
+                    <% } %>
+                    <% } else { %>
                     <tr>
                         <td colspan=5>No hay datos</td>
                     </tr>
-                    
+                    <% }%>
                 </tbody>
             </table>
         </form>
