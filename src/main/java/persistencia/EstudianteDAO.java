@@ -126,10 +126,10 @@ public class EstudianteDAO {
     }
 
     /**
-     * Envía la sentencia SQL para almacenar el dato de un juguete
+     * Envía la sentencia SQL para almacenar el dato de un estudiante
      *
-     * @param e un objeto de tipo Juguete
-     * @return in número indicando el id generado por la base de datos
+     * @param e un objeto de tipo Estudiante
+     * @return en número indicando el id generado por la base de datos
      */
     public int guardarNuevoEstudiante(Estudiante e) {
         ConexionBD con = new ConexionBD();
@@ -156,4 +156,48 @@ public class EstudianteDAO {
         return id;
     }
 
+    /**
+     * Envía la sentencia SQL para actualizar el dato de un estudiante existente
+     * @param e un objeto de tipo estudiante
+     * @return un número indicando la cantidad de registros afectados
+     */
+    public int guardarJugueteExistente(Estudiante e) {
+        ConexionBD con = new ConexionBD();
+        int id = e.getId();
+        String nombre = e.getNombre();
+        String apellido = e.getApellido();
+        String email = e.getEmail();
+        int telefono = e.getTelefono();
+        String fecha = e.getFechaInicio();
+        int idcurso = e.getIdcurso();
+        
+        String sql = "UPDATE estudiantes "+
+                     "SET Nombre_Estudiante = '" + nombre + "' , Apellido_Estudiante = " + apellido + " , Email_Estudiante = '" + email + "', Teléfono = " + telefono + ", Fecha_de_Inicio = " + fecha + ",  IDCurso = '" + idcurso + "' " + 
+                     "WHERE IDEstudiante = " + id + " ";
+        int filas = con.EjecutarUpdate(sql);
+        con.Desconectar();
+        return filas;
+    }
+    
+    /**
+     * Cargar los diferentes tipos de juguetes desde la BD
+     * @return un treemap con la lista de los tipos de juguetes
+     */
+    public TreeMap<Integer, String> cargarCursoEstudiante() {
+        TreeMap<Integer, String> listaCursos = new TreeMap<Integer, String>();
+        ConexionBD con = new ConexionBD();
+        ResultSet rs = con.EjecutarQuery("SELECT IDCurso, tipo FROM cursos ");
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("IDCurso");
+                String curso = rs.getString("Nombre_Curso");
+                listaCursos.put(id, curso);
+            }
+        } catch (SQLException ex) {
+            con.Desconectar();
+            return null;
+        }
+        con.Desconectar();
+        return listaCursos;
+    }
 }
