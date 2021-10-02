@@ -43,10 +43,10 @@ public class TestGeneral {
     @Test
     public void verificarInsercionEstudiante() {
         EstudianteDAO dao = new EstudianteDAO();
-        Estudiante e = new Estudiante("Estudiante de Prueba", "Apellido de Prueba", "email de prueba", 2171729, "Fecha de inicio prueba", 1 );
+        Estudiante e = new Estudiante("Estudiante de Prueba", "Apellido de Prueba", "email de prueba", 2171729, "2018-09-01", 1 );
         int id = dao.guardarNuevoEstudiante(e);
         Assert.assertTrue(id > 0, "No se guardó dato de un Estudiante. ");
-        String sql = "DELETE FROM estudiantes WHERE IDEstudiante = " + id;
+        String sql = "DELETE FROM estudiantes WHERE IDEstudiante = " + id ;
         ConexionBD con = new ConexionBD();
         int cant = con.EjecutarUpdate(sql);
         Assert.assertTrue(cant == 1, "No se logró hacer limpieza del dato de prueba de un Estudiante ingresado. ");

@@ -140,8 +140,8 @@ public class EstudianteDAO {
         String fecha = e.getFechaInicio();
         int idcurso = e.getIdcurso();
 
-        String sql = "INSERT INTO estudiantes (Nombre_Estudiante, Apellido_Estudiante, Email_Estudiante, Teléfono, Fecha_de_Inicio, IDCurso ) "
-                + "VALUES ('" + nombre + "', '" + apellido + "', '" + email + "', '" + telefono + "', '" + fecha + "', '" + idcurso + "') ";
+        String sql = "INSERT INTO estudiantes (Nombre_Estudiante, Apellido_Estudiante, Email_Estudiante, Teléfono, Fecha_de_Inicio, IDCurso) "
+                + "VALUES ('" + nombre + "', '" + apellido + "', '" + email + "', " + telefono + ", '" + fecha + "', " + idcurso + " ) ";
         ResultSet rs = con.EjecutarInsert(sql);
         int id = 0;
         try {
@@ -172,7 +172,7 @@ public class EstudianteDAO {
         int idcurso = e.getIdcurso();
         
         String sql = "UPDATE estudiantes "+
-                     "SET Nombre_Estudiante = '" + nombre + "' , Apellido_Estudiante = '" + apellido + "' , Email_Estudiante = '" + email + "', Teléfono = '" + telefono + "', Fecha_de_Inicio = '" + fecha + "',  IDCurso = '" + idcurso + "' " + 
+                     "SET Nombre_Estudiante = '" + nombre + "' , Apellido_Estudiante = '" + apellido + "' , Email_Estudiante = '" + email + "', Teléfono = " + telefono + ", Fecha_de_Inicio = '" + fecha + "', IDCurso = " + idcurso + " " + 
                      "WHERE IDEstudiante = " + id + " ";
         int filas = con.EjecutarUpdate(sql);
         con.Desconectar();
