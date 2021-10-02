@@ -141,7 +141,7 @@ public class EstudianteDAO {
         int idcurso = e.getIdcurso();
 
         String sql = "INSERT INTO estudiantes (Nombre_Estudiante, Apellido_Estudiante, Email_Estudiante, Teléfono, Fecha_de_Inicio, IDCurso ) "
-                + "VALUES ('" + nombre + "', " + apellido + ", '" + email + "', " + telefono + ", '" + fecha + "', '" + idcurso + "') ";
+                + "VALUES ('" + nombre + "', '" + apellido + "', '" + email + "', '" + telefono + "', '" + fecha + "', '" + idcurso + "') ";
         ResultSet rs = con.EjecutarInsert(sql);
         int id = 0;
         try {
@@ -161,7 +161,7 @@ public class EstudianteDAO {
      * @param e un objeto de tipo estudiante
      * @return un número indicando la cantidad de registros afectados
      */
-    public int guardarJugueteExistente(Estudiante e) {
+    public int guardarEstudianteExistente(Estudiante e) {
         ConexionBD con = new ConexionBD();
         int id = e.getId();
         String nombre = e.getNombre();
@@ -172,7 +172,7 @@ public class EstudianteDAO {
         int idcurso = e.getIdcurso();
         
         String sql = "UPDATE estudiantes "+
-                     "SET Nombre_Estudiante = '" + nombre + "' , Apellido_Estudiante = " + apellido + " , Email_Estudiante = '" + email + "', Teléfono = " + telefono + ", Fecha_de_Inicio = " + fecha + ",  IDCurso = '" + idcurso + "' " + 
+                     "SET Nombre_Estudiante = '" + nombre + "' , Apellido_Estudiante = '" + apellido + "' , Email_Estudiante = '" + email + "', Teléfono = '" + telefono + "', Fecha_de_Inicio = '" + fecha + "',  IDCurso = '" + idcurso + "' " + 
                      "WHERE IDEstudiante = " + id + " ";
         int filas = con.EjecutarUpdate(sql);
         con.Desconectar();
@@ -186,7 +186,7 @@ public class EstudianteDAO {
     public TreeMap<Integer, String> cargarCursoEstudiante() {
         TreeMap<Integer, String> listaCursos = new TreeMap<Integer, String>();
         ConexionBD con = new ConexionBD();
-        ResultSet rs = con.EjecutarQuery("SELECT IDCurso, tipo FROM cursos ");
+        ResultSet rs = con.EjecutarQuery("SELECT IDCurso, Nombre_Curso FROM cursos ");
         try {
             while (rs.next()) {
                 int id = rs.getInt("IDCurso");
