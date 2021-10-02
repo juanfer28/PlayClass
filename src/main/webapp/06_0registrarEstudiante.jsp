@@ -3,7 +3,8 @@
     Created on : 30/09/2021, 7:25:44 p. m.
     Author     : SIRIUS
 --%>
-
+<%@page import="logica.LogicaEstudiante"%>
+<%@page import="logica.Estudiante"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -208,16 +209,23 @@
       <div class="container mt-5"> 
         <h3 class="mb-3">Registro Estudiante</h3>
         <hr>
-        <form>
-            <div class="row mb-3">
-                <label for="txt1" class="col-form-label col-sm-2">Filtrar por nombre</label>
-                <input type="text" class="col-form-control col-sm-9" id="txt1" name="txt1" value="">
-                <button type="button" class="btn btn-light col-sm-1"><i class="bi bi-search"></i></button>
+            <%
+                String filtro = (request.getParameter("txtFiltro") == null) ? "" : request.getParameter("txtFiltro");
+            %>
+            <div class="row">
+                <form method="GET" class="col-sm-10">
+                    <div class="row mb-3">
+                        <label for="txt1" class="col-form-label col-sm-2">Filtrar por Nombre</label>
+                        <input type="text" class="col-form-control col-sm-9" id="txtFiltro" name="txtFiltro" value="<%= filtro %>" placeholder="por nombre, Apellido, email, telefono, fecha, curso">
+                        <button type="submit" class="btn btn-light col-sm-1"><i class="bi bi-search"></i></button>                    
+                    </div>
+                </form>
+                <a href="06_1crearEstudiante.jsp?accion=nuevo" class="col-sm-2"><button type="submit" class="btn btn-primary" id="btnNuevo">Nuevo Estudiante</button></a>
             </div>
-
-            <table class="table">
-                <thead>
-                    <tr>
+            <form>
+                <table class="table">
+                    <thead>
+                        <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
@@ -228,8 +236,20 @@
                         <th scope="col">Modificar</th>
                     </tr>
                 </thead>
+                <%
+                        LogicaEstudiante logicaEstudiante = new LogicaEstudiante();
+                        boolean hayDatos;
+                        if (filtro.equals("") ) {
+                            hayDatos = logicaEstudiante.cargarTodosLosEstudiantes();
+                        }
+                        else {
+                            hayDatos = logicaEstudiante.cargarEstudiantePorFiltro(filtro);
+                        }
+                        
+                    %>
                 <tbody>
-                    
+                    <% if (hayDatos) { %>
+                        <%  for (Estudiante e : LogicaEstudiante.getLista()) {%>
                     <tr>
                         <td scope="row">ghjhgj</td>
                         <td>ghjghjghj</td>
